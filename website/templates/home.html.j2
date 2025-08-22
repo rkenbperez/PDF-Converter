@@ -3,7 +3,6 @@
 {% block content %}
 
     <div id="upload-container" class="p-[188px] pt-[148px] items-center">
-        <div class="bg-zinc-950 flex-grow justify-center content-center w-[1472px] h-[400px] rounded-[88px]">
             <div class="flex flex-row items-center justify-center gap-4 h-full">
                 <form action="/convert" enctype="multipart/form-data" method="post">
                     <main class="flex flex-row items-center justify-center bg-zinc-950 font-sans rounded-[24px] w-[1472px] h-[400px]">
@@ -12,7 +11,7 @@
                         <input type="file" id="dropzone-file" name="files" multiple accept="image/*" class="hidden">
                         
                         <!-- Label acts as clickable area -->
-                        <label for="dropzone-file" class="w-[1472px] h-[400px] flex flex-col items-center justify-center gap-[20px] cursor-pointer rounded-[24px] border-2 border-dashed border-blue-400 p-6 text-center text-white hover:border-blue-300 transition-colors">
+                        <label for="dropzone-file" class="w-[1472px] h-[400px] flex flex-row items-center justify-center gap-[20px] cursor-pointer rounded-[24px] border-2 border-dashed border-blue-400 p-6 text-center text-white hover:border-blue-300 transition-colors">
                             <h1 class="text-xl">Drop your files here</h1>
                             <h1 class="text-lg text-gray-300">or</h1>
                             <h1 class="text-xl text-blue-400">Click to upload files</h1>
@@ -20,7 +19,6 @@
                     </main>
                 </form>
             </div>
-        </div>
         <div class="flex justify-center mt-8">
             <!-- Submit Button (appears after files selected) -->
             <button type="submit" id="submit-btn" class="hidden mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg">
@@ -33,38 +31,7 @@
             <div id="file-list"></div>
         </div>
     </div>
-    <script>
-        const fileInput = document.getElementById('dropzone-file');
-        const submitBtn = document.getElementById('submit-btn');
-        const fileDisplay = document.getElementById('file-display');
-        const fileList = document.getElementById('file-list');
 
-        fileInput.addEventListener('change', function() {
-            const files = this.files;
-            
-            if (files.length > 0) {
-                // Show submit button
-                submitBtn.classList.remove('hidden');
-                
-                // Show file list
-                fileDisplay.classList.remove('hidden');
-                
-                // Clear previous files
-                fileList.innerHTML = '';
-                
-                // Display selected files
-                for (let i = 0; i < files.length; i++) {
-                    const fileDiv = document.createElement('div');
-                    fileDiv.className = 'bg-gray-100 p-2 mb-2 rounded';
-                    fileDiv.textContent = files[i].name;
-                    fileList.appendChild(fileDiv);
-                }
-            } else {
-                submitBtn.classList.add('hidden');
-                fileDisplay.classList.add('hidden');
-            }
-        });
-    </script>
 </body>
 </html>
 
