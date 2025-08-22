@@ -10,12 +10,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <title>{% block title %}Home{% endblock %}</title>
 </head>
-<body class="bg-zinc-900">
-    <div class="bg-zinc-950 h-[124px] flex-row justify-center items-center">
-        <h1 class="text-white text font-(family-name:Outfit) font-bold text-[48px] text-left pl-[188px] pt-[25px]">PDF Converter</h1>
-    </div>
+<body class="bg-zinc-900 font-[Outfit]">
+    <!-- Navbar -->
+    <header class="bg-zinc-950">
+        <div class="max-w-7xl mx-auto flex items-center h-[80px] px-6 sm:px-12 lg:px-24">
+            <!-- Logo / Title -->
+            <h1 class="text-white font-bold text-2xl sm:text-3xl lg:text-4xl">
+                PDF Converter
+            </h1>
 
+            <!-- Optional Right Side Links (if you want later) -->
+            <nav class="ml-auto hidden sm:flex gap-6 text-white">
+                <a href="/" class="hover:text-blue-400 transition">Home</a>
+            </nav>
+        </div>
+    </header>
+    
     <script src="{{ url_for('static', filename='index.js') }}"></script>
-    {% block content %}
-    {% endblock %}
+    {% block content %}{% endblock %}
 </body>

@@ -1,33 +1,35 @@
 {% extends "base.html.j2" %}
 {% block content %}
-<div id="upload-container" class="p-[188px] pt-[148px] items-center">
-    <div class="flex flex-row items-center justify-center gap-4 h-full">
-        <form action="/convert" enctype="multipart/form-data" method="post" class="flex flex-col items-center">
-            <main class="flex flex-row items-center justify-center bg-zinc-950 font-sans rounded-[24px] w-[1472px] h-[400px]">
+<div id="upload-container" class="px-4 pt-16 sm:px-8 lg:px-24">
+    <div class="flex flex-col items-center">
+        <form action="/convert" enctype="multipart/form-data" method="post" class="w-full flex flex-col items-center">
+            
+            <!-- Dropzone -->
+            <main class="flex items-center justify-center bg-zinc-950 font-sans rounded-2xl w-full max-w-5xl h-64 sm:h-80 lg:h-[400px]">
                 <!-- File Input (Hidden) -->
                 <input type="file" id="dropzone-file" name="files" multiple accept="image/*" class="hidden">
                 
-                <!-- Label acts as clickable area -->
-                <label for="dropzone-file" class="w-[1472px] h-[400px] flex flex-col items-center justify-center gap-[20px] cursor-pointer rounded-[24px] border-2 border-dashed border-blue-400 p-6 text-center text-white hover:border-blue-300 transition-colors">
-                    <h1 class="text-xl">Drop your files here</h1>
-                    <h1 class="text-lg text-gray-300">or</h1>
-                    <h1 class="text-xl text-blue-400">Click to upload files</h1>
+                <!-- Label (clickable area) -->
+                <label for="dropzone-file" class="w-full h-full flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 cursor-pointer rounded-2xl border-2 border-dashed border-blue-400 p-6 text-center text-white hover:border-blue-300 transition-colors">
+                    <h1 class="text-base sm:text-lg md:text-xl">Drop your files here</h1>
+                    <h1 class="text-sm sm:text-base text-gray-300">or</h1>
+                    <h1 class="text-base sm:text-lg md:text-xl text-blue-400">Click to upload files</h1>
                 </label>
             </main>
             
-            <!-- Submit Button (MOVED INSIDE FORM) -->
-            <div class="flex justify-center mt-8">
-                <button type="submit" id="submit-btn" class="hidden bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg">
+            <!-- Submit Button -->
+            <div class="flex justify-center mt-6 sm:mt-8">
+                <button type="submit" id="submit-btn" class="hidden bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-lg">
                     Convert to PDF
                 </button>
             </div>
         </form>
     </div>
     
-    <!-- Display selected files -->
-    <div id="file-display" class="hidden p-8 max-w-4xl mx-auto">
-        <h3 class="text-lg font-semibold mb-4">Selected Files:</h3>
-        <div id="file-list"></div>
+    <!-- File Display -->
+    <div id="file-display" class="hidden p-4 sm:p-8 max-w-2xl sm:max-w-4xl mx-auto">
+        <h3 class="text-md sm:text-lg font-semibold mb-3 sm:mb-4">Selected Files:</h3>
+        <div id="file-list" class="text-sm sm:text-base"></div>
     </div>
 </div>
 {% endblock %}
