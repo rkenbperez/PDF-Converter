@@ -1,54 +1,28 @@
-# PDF-Converter
-A simple web application built with Flask, TailwindCSS (CDN), and Pillow that allows users to upload multiple image files (PNG, JPG, etc.) and convert them into a single PDF.
-🚀 Features
-- Upload one or more images
-- Convert images into a single PDF file
-- Download the generated PDF instantly
-- Responsive UI styled with TailwindCSS (CDN)
-- Lightweight and easy to deploy
-🛠️ Tech Stack
-- Backend: Flask
-- Frontend: TailwindCSS (CDN)
-- Image Processing: Pillow
-📂 Project Structure
-
-PDF-Converter/
-│── app.py
-│── requirements.txt
-│── config.py
-│── website/
-│   ├── __init__.py
-│   ├── views.py
-│   ├── pdfy.py
-│   └── templates/
-│       ├── base.html.j2
-│       ├── home.html.j2
-│       └── output.html.j2
-│── static/
-│   └── index.js
-
-⚙️ Installation
-1. Clone the repository
-git clone https://github.com/your-username/PDF-Converter.git
-cd PDF-Converter
-2. Create and activate a virtual environment
-python -m venv venv
-source venv/bin/activate   # Linux/Mac
-venv\Scripts\activate      # Windows
-3. Install dependencies
-pip install -r requirements.txt
-▶️ Usage
-1. Run the Flask app:
+PDF Converter - Web App
+Overview
+PDF Converter is a simple web application that allows users to upload one or more images and convert them into a single PDF document. It features a clean and responsive design with drag-and-drop support, making the process smooth and user-friendly.  The app is built using Python, Flask, TailwindCSS (via CDN), and Pillow for image processing.
+Features
+Drag & Drop Upload: Easily add files by dragging them into the upload box.
+Multiple File Support: Upload multiple images at once.
+PDF Conversion: Converts uploaded images into a single PDF file.
+Downloadable Output: Get your generated PDF with one click.
+Responsive Design: Works well on desktop and mobile devices.
+Technologies Used
+Frontend: HTML, TailwindCSS (via CDN)
+Backend: Python, Flask
+Image Processing: Pillow (PIL)
+Deployment: Render / Any WSGI-compatible server
+Installation
+1. Clone the repository:
+git clone https://github.com/yourusername/pdf-converter.git cd pdf-converter
+2. Create a virtual environment and install dependencies:
+python3 -m venv venv source venv/bin/activate   # On Windows: venv\Scripts\activate pip install -r requirements.txt
+3. Run the Flask app:
 python app.py
-2. Open your browser and go to:
-http://127.0.0.1:5000
-3. Upload your images → Click Convert to PDF → Download the generated PDF
-📦 Deployment
-For deployment on platforms like Render or Heroku:
-1. Add gunicorn to requirements.txt
-gunicorn
-2. Create a file named Procfile in the root folder with this content:
-web: gunicorn app:app
-3. Push to your repository and deploy 🚀
-📝 License
-This project is licensed under the MIT License.
+4. Open your browser at http://127.0.0.1:5000.
+Usage
+Drag and drop your images or click to upload.
+Press Convert to PDF.
+Download the generated PDF file.
+Project Structure
+PDF-Converter/ │ ├─ app.py                # Flask app entry point ├─ requirements.txt      # Python dependencies ├─ config.py             # Config for exports/uploads directories │ ├─ website/ │   ├─ __init__.py       # App factory │   ├─ views.py          # Routes and logic │   ├─ pdfy.py           # PDF conversion logic │   ├─ templates/        # Jinja2 HTML templates │   │   ├─ base.html.j2 │   │   └─ home.html.j2 │   └─ static/           # CSS and JS files │       ├─ style.css │       └─ index.js 
