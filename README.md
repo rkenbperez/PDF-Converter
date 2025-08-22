@@ -23,21 +23,21 @@ The app is built using **Flask**, **Tailwind (via CDN)**, and **Pillow** for ima
 ## Installation & Run
 
 
-# 1. Clone the repository
+1. Clone the repository
 git clone https://github.com/yourusername/PDF-Converter.git
 cd PDF-Converter
 
-# 2. Create and activate a virtual environment
+2. Create and activate a virtual environment
 python3 -m venv venv
 source venv/bin/activate   # On Windows: venv\Scripts\activate
 
-# 3. Install dependencies
+3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Run the app
+4. Run the app
 python app.py
 
-# 5. Open your browser at
+5. Open your browser at
 http://127.0.0.1:5000
 
 Project Structure
