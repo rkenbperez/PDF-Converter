@@ -1,33 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style type="text/tailwindcss">@theme {--color-clifford: #da373d;}</style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    <title>{% block title %}Home{% endblock %}</title>
-</head>
-<body>
-    <div class="bg-zinc-950 h-[124px] flex-row justify-center items-center">
-        <h1 class="text-white text font-(family-name:Outfit) font-bold text-[48px] text-left pl-[188px] pt-[25px]">PDF Converter</h1>
-    </div>
+{% extends "base.html.j2" %}
 
-    <div id="uploud-container" class="p-[188px] pt-[148px] ">
+{% block content %}
+
+    <div id="upload-container" class="p-[188px] pt-[148px] items-center">
         <div class="bg-zinc-950 flex-grow justify-center content-center w-[1472px] h-[400px] rounded-[88px]">
             <div class="flex flex-row items-center justify-center gap-4 h-full">
                 <form action="/convert" enctype="multipart/form-data" method="post">
                     <main class="flex flex-row items-center justify-center bg-zinc-950 font-sans rounded-[24px] w-[1472px] h-[400px]">
-                    <label for="dropzone-file" class="w-[1472px] h-[400px] flex flex-row items-center justify-center gap-[20px] cursor-pointer flex-col items-center rounded-[24px] border-2 border-dashed border-blue-400  p-6 text-center">
-                        <h1>Drop your file here</h1>
-                        <h1>or</h1>
-                        <h1>Upload a file</h1>
-                    </label>
+                        
+                        <!-- File Input (Hidden) -->
+                        <input type="file" id="dropzone-file" name="files" multiple accept="image/*" class="hidden">
+                        
+                        <!-- Label acts as clickable area -->
+                        <label for="dropzone-file" class="w-[1472px] h-[400px] flex flex-col items-center justify-center gap-[20px] cursor-pointer rounded-[24px] border-2 border-dashed border-blue-400 p-6 text-center text-white hover:border-blue-300 transition-colors">
+                            <h1 class="text-xl">Drop your files here</h1>
+                            <h1 class="text-lg text-gray-300">or</h1>
+                            <h1 class="text-xl text-blue-400">Click to upload files</h1>
+                        </label>           
+                    </main>
+                </form>
             </div>
         </div>
-    </di>
-    
+        <div class="flex justify-center mt-8">
+            <!-- Submit Button (appears after files selected) -->
+            <button type="submit" id="submit-btn" class="hidden mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg">
+                Convert to PDF
+            </button>
+        </div>
+        <!-- Display selected files -->
+        <div id="file-display" class="hidden p-8 max-w-4xl mx-auto">
+            <h3 class="text-lg font-semibold mb-4">Selected Files:</h3>
+            <div id="file-list"></div>
+        </div>
+    </div>
+    <script>
+        const fileInput = document.getElementById('dropzone-file');
+        const submitBtn = document.getElementById('submit-btn');
+        const fileDisplay = document.getElementById('file-display');
+        const fileList = document.getElementById('file-list');
+
+        fileInput.addEventListener('change', function() {
+            const files = this.files;
+            
+            if (files.length > 0) {
+                // Show submit button
+                submitBtn.classList.remove('hidden');
+                
+                // Show file list
+                fileDisplay.classList.remove('hidden');
+                
+                // Clear previous files
+                fileList.innerHTML = '';
+                
+                // Display selected files
+                for (let i = 0; i < files.length; i++) {
+                    const fileDiv = document.createElement('div');
+                    fileDiv.className = 'bg-gray-100 p-2 mb-2 rounded';
+                    fileDiv.textContent = files[i].name;
+                    fileList.appendChild(fileDiv);
+                }
+            } else {
+                submitBtn.classList.add('hidden');
+                fileDisplay.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
+
+{% endblock %}
