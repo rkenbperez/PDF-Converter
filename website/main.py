@@ -175,4 +175,4 @@ if __name__ == '__main__':
     # Clean up any leftover files from previous runs
     startup_cleanup()
     
-    # app.run(debug=True)
+    app.run(debug=True)
