@@ -164,15 +164,6 @@ def startup_cleanup():
     except Exception as e:
         print(f"Startup cleanup error: {e}")
 
-if __name__ == '__main__':
-    print(f"UPLOADS_DIR: {UPLOADS_DIR}")
-    print(f"EXPORTS_DIR: {EXPORTS_DIR}")
-    
-    # Make sure directories exist
-    Path(UPLOADS_DIR).mkdir(exist_ok=True)
-    Path(EXPORTS_DIR).mkdir(exist_ok=True)
-    
-    # Clean up any leftover files from previous runs
-    startup_cleanup()
-    
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     startup_cleanup()
+#     app.run(debug=True)
